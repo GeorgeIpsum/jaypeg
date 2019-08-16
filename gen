@@ -1,0 +1,38 @@
+#!/bin/bash
+
+TYPE=$1
+NAME=$2
+
+if [ -z "$NAME" ]; then
+  echo "No name provided"
+  exit 0
+fi
+
+if [ "$TYPE" = "c" ] || [ "$TYPE" = "component" ]; then
+  COMPONENTNAME="src/components/${NAME}"
+
+  if [ -d "$COMPONENTNAME" ]; then
+    echo "Component with name ${NAME} already exists."
+    exit 0
+  fi
+
+  mkdir -p $COMPONENTNAME
+
+  printf '%s\n' ".${NAME} {}" > "${COMPONENTNAME}/${NAME}.css"
+  printf '%b\n' "import React from 'react';" "import './${NAME}.css';" "" "function ${NAME}() {" "\treturn(" "\t\t<div className=\"${NAME}\"></div>" "\t);" "}" "" "export default ${NAME};"> "${COMPONENTNAME}/${NAME}.js"
+  printf '%s\n' "export { default } from './${NAME}';" > "${COMPONENTNAME}/index.js"
+elif [ "$TYPE" = "u" ] || [ "$TYPE" = "utility" ]; then
+  UTILITYNAME="src/utilities/${NAME}"
+
+  if [ -d "$UTILITYNAME" ]; then
+    echo "Utility with name ${NAME} already exists."
+    exit 0
+  fi
+
+  mkdir -p $UTILITYNAME
+
+  printf '%s\n' "//${NAME}.js utility" > "${UTILITYNAME}/${NAME}.js"
+  printf '%s\n' "export * from './${NAME};'" > "${UTILITYNAME}/index.js"
+else
+  echo "Invalid arguments"
+fi

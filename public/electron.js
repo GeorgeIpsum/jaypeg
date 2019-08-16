@@ -53,7 +53,7 @@ createWindow = () => {
       shell.openExternal(arg);
     });
   });
-};
+}
 
 generateMenu = () => {
   const template = [

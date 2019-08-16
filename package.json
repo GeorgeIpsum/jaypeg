@@ -1,7 +1,7 @@
 {
   "name": "tasawur",
   "version": "0.1.0",
-  "description": "a jpeg decoder/ encoder built on react and electron",
+  "description": "a jpeg decoder/ encoder built with react and electron",
   "private": true,
   "author": "Ibrahim Saberi <georgeipsum@gmail.com>",
   "main": "public/electron.js",
