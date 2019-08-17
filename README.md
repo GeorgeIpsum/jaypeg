@@ -1,5 +1,4 @@
-# Tasawur - تصور
-> _the way in which something is perceived, regarded, or imagined_
+# Jaypeg
 
 A JPEG encoder/ decoder built using React and Electron.
 
