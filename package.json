@@ -6,17 +6,19 @@
   "author": "Ibrahim Saberi <georgeipsum@gmail.com>",
   "main": "public/electron.js",
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "brace": "^0.11.1",
     "electron-is-dev": "^1.1.0",
-    "react-dev-utils": "^9.0.1"
+    "react": "^16.8.6",
+    "react-ace": "^7.0.2",
+    "react-dev-utils": "^9.0.1",
+    "react-dom": "^16.8.6"
   },
   "scripts": {
     "dev": "yarn react-scripts start",
-		"build": "react-scripts build",
-		"start": "concurrently \"cross-env BROWSER=none yarn react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
-		"pack": "electron-builder --dir",
-		"dist": "npx build --x64 --macos --win --linux --c.extraMetadata.main=build/electron.js -p always"
+    "build": "react-scripts build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
+    "pack": "electron-builder --dir",
+    "dist": "npx build --x64 --macos --win --linux --c.extraMetadata.main=build/electron.js -p always"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,14 +36,14 @@
     ]
   },
   "devDependencies": {
-    "electron": "^5.0.5",
-    "cross-env": "^5.2.0",
-    "electron-builder": "^20.44.4",
-    "version-bump-prompt": "5.0.3",
     "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "electron": "^5.0.5",
+    "electron-builder": "^20.44.4",
+    "electron-devtools-installer": "2.2.4",
     "react-scripts": "^3.0.1",
-    "wait-on": "^3.2.0",
-    "electron-devtools-installer": "2.2.4"
+    "version-bump-prompt": "5.0.3",
+    "wait-on": "^3.2.0"
   },
   "build": {
     "appId": "com.tasawur",
@@ -67,32 +69,32 @@
       "category": "public.app-category.utilities"
     },
     "mas": {
-			"entitlements": "assets/entitlements.mas.plist",
-			"entitlementsInherit": "assets/entitlements.mas.inherit.plist",
-			"provisioningProfile": "assets/embedded.provisionprofile"
-		},
-		"win": {
-			"target": "nsis",
-			"icon": "assets/icon.ico",
-			"publish": {
-				"provider": "s3",
-				"bucket": "tasawur-releases",
-				"path": "releases"
-			}
-		},
-		"linux": {
-			"icon": "assets/icon.png",
-			"target": [
-				"snap",
-				"AppImage"
-			],
-			"description": "Example",
-			"category": "Network;Feed",
-			"publish": {
-				"provider": "s3",
-				"bucket": "tasawur-releases",
-				"path": "releases"
-			}
-		}
+      "entitlements": "assets/entitlements.mas.plist",
+      "entitlementsInherit": "assets/entitlements.mas.inherit.plist",
+      "provisioningProfile": "assets/embedded.provisionprofile"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "publish": {
+        "provider": "s3",
+        "bucket": "tasawur-releases",
+        "path": "releases"
+      }
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": [
+        "snap",
+        "AppImage"
+      ],
+      "description": "Example",
+      "category": "Network;Feed",
+      "publish": {
+        "provider": "s3",
+        "bucket": "tasawur-releases",
+        "path": "releases"
+      }
+    }
   }
 }
