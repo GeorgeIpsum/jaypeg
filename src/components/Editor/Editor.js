@@ -1,31 +1,38 @@
 import React from 'react';
 import './Editor.css';
-import brace from 'brace';
 import AceEditor from 'react-ace';
 
-import 'brace/mode/abc';
+import 'brace/mode/asciidoc';
 import 'brace/theme/clouds_midnight';
 
 export default class Editor extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {...this.props};
+	}
+
+	componentWillReceiveProps(props, a) {
+		if(this.props.value !== props.value) {
+			this.setState({...props});
+		}
 	}
 
 	onChange(newValue) {
-		console.log('change',newValue)
+		this.props.onEdit(newValue);
 	}
 
 	render() {
 		return(
 			<AceEditor
-				mode="abc"
+				mode="asciidoc"
 				theme="clouds_midnight"
-				onChange={this.onChange}
+				onChange={this.onChange.bind(this)}
 				name="test"
 				editorProps={{$blockScrolling: true}}
 				height="100vh"
 				width="50%"
 				fontSize="20px"
+				value={this.state.value}
 			/>
 		);
 	}

@@ -10,6 +10,20 @@ export default class Jpeg extends React.Component {
 		}
 	}
 
+	componentWillReceiveProps(props, a) {
+		if(this.props.uri !== props.uri) {
+			let imageStyle = {
+				height: '100vh',
+				width: '50%',
+				backgroundImage: `url(${props.uri})`,
+				backgroundRepeat: 'no-repeat, no-repeat',
+				backgroundPosition: 'center',
+				backgroundSize: 'contain'
+			};
+			this.setState({uri: props.uri, style: imageStyle});
+		}
+	}
+
 	getDataUri(url, callback) {
 		let image = new Image();
 
@@ -38,6 +52,7 @@ export default class Jpeg extends React.Component {
 			backgroundSize: 'contain'
 		};
 		this.setState({uri: uri, style: imageStyle});
+		this.props.onEdit(uri);
 	}
 
 	componentWillMount() {
