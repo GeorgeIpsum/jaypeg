@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Editor from '../Editor';
 import Jpeg from '../Jpeg';
-import king from '../../assets/images/king.jpg';
+import img from '../../assets/images/huff_simple0.jpg';
 import { chunk, hexToBase64 } from '../../utilities/helpers';
 
 export default class App extends React.Component {
@@ -20,7 +20,7 @@ export default class App extends React.Component {
       HEX += (_hex.length===2?_hex:'0'+_hex);
     }
     HEX = HEX.toUpperCase();
-    HEX = chunk(HEX, 8, "\n");
+    HEX = chunk(HEX, 32, "\n");
     
     this.setState({value: HEX});
   }
@@ -37,7 +37,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <Editor value={this.state.value} onEdit={this.handleEditorChange} />
-        <Jpeg uri={this.state.uri} image={king} onEdit={this.handleImageChange} />
+        <Jpeg uri={this.state.uri} image={img} onEdit={this.handleImageChange} />
       </div>
     );
   }

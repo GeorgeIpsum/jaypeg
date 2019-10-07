@@ -32,6 +32,7 @@ export default class Editor extends React.Component {
 				height="100vh"
 				width="50%"
 				fontSize="20px"
+				wrapEnabled={true}
 				value={this.state.value}
 			/>
 		);
